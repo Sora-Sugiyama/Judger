@@ -19,6 +19,9 @@ int main(int argc,const char * argv[]){
     int n;
     {
         std::ifstream fin(dir+"num");
+        if(!fin){
+            cerr<<"Cannot excute judger. (Wrong dataset)"<<endl;
+        }
         fin>>n;
         fin.close();
     }
@@ -75,6 +78,7 @@ int main(int argc,const char * argv[]){
             skip:;
         }
     }
+    
     if(numAc==n)std::cout<<"* Accepted *"<<std::endl;
     std::cout<<"- End of judge -"<<std::endl;
     
