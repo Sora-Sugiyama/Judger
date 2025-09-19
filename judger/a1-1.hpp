@@ -12,7 +12,6 @@
 using namespace std;
 
 #include <sstream>
-#include <vector>
 #include <string>
 
 int arr[5555];
