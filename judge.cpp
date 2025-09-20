@@ -19,6 +19,7 @@ int main(int argc,const char * argv[]){
     int n;
     {
         std::ifstream fin(dir+"num");
+        
         if(!fin){
             cerr<<"Cannot excute judger. (Wrong dataset)"<<endl;
         }
@@ -32,12 +33,13 @@ int main(int argc,const char * argv[]){
         s=std::string(2-s.size(),'0')+s;
         
         std::string in;
+        
         {
             std::ifstream fin(dir+s+".in");
-            std::string tmp;
-            while(getline(fin,tmp))in+=tmp+"\n";
-            
-            fin.close();
+            in=std::string(
+                           (std::istreambuf_iterator<char>(fin)),
+                           (std::istreambuf_iterator<char>())
+                           );
         }
         
         {
@@ -63,6 +65,7 @@ int main(int argc,const char * argv[]){
                 if(cor.back()==' ')cor.pop_back();
                 
                 if(cor!=tmp){
+                    in.pop_back();
                     std::cout<<"Wrong answer at "<<s<<std::endl;
                     goto skip;
                 }
